@@ -96,6 +96,8 @@ const AdminPage = ({ admin }) => {
       end_block = Number(end_block);
       setE(end_block);
 
+      console.log(`web3 ok`);
+
       const response = await axios.get(
         `${process.env.REACT_APP_BACKEND_URL}/raffle/${key}`,
         {
@@ -104,6 +106,10 @@ const AdminPage = ({ admin }) => {
           },
         }
       );
+
+      console.log(response);
+
+      console.log('db ok');
 
       const f_B = response.data.start_block; // fromBlock : 은 디비에서
       const e_B = end_block;
@@ -124,6 +130,8 @@ const AdminPage = ({ admin }) => {
         }
       });
 
+      console.log('delete ing~');
+
       if (a.length === 0) {
         await axios.put(
           `${process.env.REACT_APP_BACKEND_URL}/raffle/${n}}/done`,
@@ -136,6 +144,7 @@ const AdminPage = ({ admin }) => {
             },
           }
         );
+        get_Data();
       }
     } catch (error) {
       console.error(error);
@@ -159,6 +168,7 @@ const AdminPage = ({ admin }) => {
           },
         }
       );
+      get_Data();
     }
   };
 
@@ -242,7 +252,7 @@ const AdminPage = ({ admin }) => {
             data?.map((v, i) => {
               return (
                 <button key={i} onClick={() => RaffleEnd(v.id)}>
-                  {v.name} 래플 종료
+                  {v.id} {v.name} 래플 종료
                 </button>
               );
 
