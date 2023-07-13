@@ -43,12 +43,27 @@ router.get('/', async (req, res) => {
 });
 
 // 특정 래플 조회
-router.get('/:address', async (req, res) => {
+router.get('/winner/:address', async (req, res) => {
   try {
     const address = req.params.address;
 
     const raffle = await client.raffle.findMany({
       where: { winner: address },
+    });
+    return res.json(raffle);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'An error occurred' });
+  }
+});
+
+// 특정 id 래플 조회
+router.get('/:id', async (req, res) => {
+  try {
+    const id = req.params.id;
+
+    const raffle = await client.raffle.findUnique({
+      where: { id },
     });
     return res.json(raffle);
   } catch (error) {

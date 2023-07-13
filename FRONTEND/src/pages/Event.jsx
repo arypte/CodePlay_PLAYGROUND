@@ -45,11 +45,19 @@ const EventPage = () => {
     return pageArray;
   };
 
-  const get_Raffle_Data = async () => {
+  const get_Data = async () => {
     setIsLoading(true);
     try {
+      let ARdata;
+
+      if (activeTab === 1) {
+        ARdata = 'raffle';
+      } else {
+        ARdata = 'auction';
+      }
+
       const response = await axios.get(
-        `${process.env.REACT_APP_BACKEND_URL}/raffle/`,
+        `${process.env.REACT_APP_BACKEND_URL}/${ARdata}/`,
         {
           headers: {
             'ngrok-skip-browser-warning': 'any',
@@ -72,7 +80,7 @@ const EventPage = () => {
 
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_BACKEND_URL}/raffle/${account.address}`,
+        `${process.env.REACT_APP_BACKEND_URL}/raffle/winner/${account.address}`,
         {
           headers: {
             'ngrok-skip-browser-warning': 'any',
@@ -83,28 +91,6 @@ const EventPage = () => {
       setIsLoading(false);
     } catch (error) {
       console.error(error);
-      setIsLoading(false);
-    }
-  };
-
-  const get_Auction_Data = async () => {
-    setIsLoading(true);
-    try {
-      const response = await axios.get(
-        `${process.env.REACT_APP_BACKEND_URL}/auction`,
-        {
-          headers: {
-            'ngrok-skip-browser-warning': 'any',
-          },
-          params: {
-            isEnd: toggle,
-          },
-        }
-      );
-      setdata(response.data);
-      setIsLoading(false);
-    } catch (error) {
-      console.log(error);
       setIsLoading(false);
     }
   };
@@ -124,23 +110,18 @@ const EventPage = () => {
   }, []);
 
   useEffect(() => {
-    if (activeTab === 1) {
-      get_Raffle_Data();
-    } else if (activeTab === 2) {
-      get_Auction_Data();
+    if (activeTab !== 3) {
+      get_Data();
     }
     setSp(1);
   }, [toggle]);
 
   useEffect(() => {
-    if (activeTab === 1) {
-      get_Raffle_Data();
-    } else if (activeTab === 2) {
-      get_Auction_Data();
+    if (activeTab !== 3) {
+      get_Data();
     } else if (activeTab === 3) {
       getitem();
     }
-
     setSp(1);
   }, [activeTab]);
 

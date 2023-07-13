@@ -1,26 +1,24 @@
-import React from "react";
-import { createContext, useEffect, useState } from "react";
-import "./index.css";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Footer from "./components/footer";
-import Header from "./components/header";
-import StatusBar from "./components/statusbar";
-import EventPage from "./pages/Event";
-import Homepage from "./pages/Home";
-import ReactPlayer from "react-player";
-import Mypage from "./pages/Mypage";
-import Nfttest from "./pages/Nfttest";
-import AdminPage from "./pages/admin";
-import { n_abi, n_addr, t_abi, t_addr } from "./raffletest.config";
-import Web3 from "web3";
-import LoginPage from "./pages/login";
-import TicketBooking from "./pages/Ticket2";
-import RfDetailPage from "./components/RFdetail";
-import ATDetailPage from "./components/ATdetail";
+import React from 'react';
+import { createContext, useEffect, useState } from 'react';
+import './index.css';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Footer from './components/footer';
+import Header from './components/header';
+import StatusBar from './components/statusbar';
+import EventPage from './pages/Event';
+import Homepage from './pages/Home';
+import ReactPlayer from 'react-player';
+import Mypage from './pages/Mypage';
+import Nfttest from './pages/Nfttest';
+import AdminPage from './pages/admin';
+import { n_abi, n_addr, t_abi, t_addr } from './raffletest.config';
+import Web3 from 'web3';
+import LoginPage from './pages/login';
+import TicketBooking from './pages/Ticket2';
 
 export const AppContext = createContext();
 
-const admin = "0x1f6D70acBd7B09096717fd5625783F78AF685A5a";
+const admin = '0x1f6D70acBd7B09096717fd5625783F78AF685A5a';
 function App() {
   const [temp, setTemp] = useState();
   const [account, setAccount] = useState();
@@ -66,7 +64,8 @@ function App() {
         web3,
         token_c,
         nft_c,
-      }}>
+      }}
+    >
       <div>
         <ReactPlayer
           url="/Videos/video.mp4"
@@ -76,20 +75,20 @@ function App() {
           width="100%"
           height="auto"
           style={{
-            position: "absolute",
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
           }}
         />
         <div
           style={{
-            position: "absolute",
+            position: 'absolute',
             top: 0,
             bottom: 0,
             left: 0,
             right: 0,
-            backgroundColor: "rgba(0,0,0,0.15)",
+            backgroundColor: 'rgba(0,0,0,0.15)',
           }}
         />
 
@@ -105,8 +104,6 @@ function App() {
               <Route path="/LoginPage" element={<LoginPage />} />
               <Route path="/AdminPage" element={<AdminPage admin={admin} />} />
               <Route path="/nft" element={<Nfttest />} />
-              <Route path="/RFDetail" element={<RfDetailPage />} />
-              <Route path="/ATDetail" element={<ATDetailPage />} />
             </Routes>
             <Footer />
           </div>
