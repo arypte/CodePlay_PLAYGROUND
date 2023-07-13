@@ -39,8 +39,6 @@ const NftDetail = () => {
         from: account.address,
       });
 
-      console.log('use!');
-
       await axios.put(
         `${process.env.REACT_APP_BACKEND_URL}/nft/done`,
         {
