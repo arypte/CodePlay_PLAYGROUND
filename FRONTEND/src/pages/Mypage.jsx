@@ -35,8 +35,6 @@ const Mypage = () => {
         // response.data.map((v, i) => {
         //   if (v.isUsed === true) c++;
         // });
-
-        console.log(response.data);
         setData(response.data);
       }
     } catch (error) {

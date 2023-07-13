@@ -119,7 +119,7 @@ const EventPage = () => {
 
   useEffect(() => {
     if (data) {
-      setPage((data.length - 1) / 3 + 1);
+      setPage((data.length + 1) / 2);
     }
   }, [data]);
 
