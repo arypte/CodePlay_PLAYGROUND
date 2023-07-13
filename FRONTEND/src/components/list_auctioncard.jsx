@@ -8,10 +8,9 @@ const AuctionCard = ({ r_data }) => {
 
   return (
     <div className="product-box ">
-      <div className="product-image"></div>
+      <img className="product-image" src ={r_data.url}></img>
       <div className="product-info">
         <h3>{r_data.name}</h3>
-        {/* <p> 이미지 주소 {r_data.URL} </p> */}
         <button className="auction-button" onClick={handleEntry}>
           자세히보기
         </button>
