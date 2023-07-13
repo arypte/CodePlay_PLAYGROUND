@@ -15,17 +15,17 @@ const Homepage = ({ account }) => {
     {
       title: 'LG 트윈스 vs 기아 타이거즈',
       description: '호랑이 타이틀 매치',
-      image: '/images/image6.png',
+      image: 'https://github.com/team-codeplay-project/images/blob/main/image6.png?raw=true',
     },
     {
       title: 'SSG 랜더스 vs 두산 베어스',
       description: '연승의 주인공은?',
-      image: '/images/image13.jpg',
+      image: 'https://github.com/team-codeplay-project/images/blob/main/image13.jpg?raw=true',
     },
     {
       title: '한화 이글스 vs LG 트윈스',
       description: '5연패 신화, 한화 이글스',
-      image: '/images/image11.jpg',
+      image: 'https://github.com/team-codeplay-project/images/blob/main/image11.jpg?raw=true',
     },
   ];
 
@@ -34,22 +34,22 @@ const Homepage = ({ account }) => {
     {
       title: '두산 vs 키움',
       date: '7월 15일 토 14:00 PM',
-      image: '/images/image3.png',
+      image: 'https://github.com/team-codeplay-project/images/blob/main/image3.png?raw=true',
     },
     {
       title: '두산 VS 삼성',
       date: '7월 21일 금 17:00 PM',
-      image: '/images/image12.jpg',
+      image: 'https://github.com/team-codeplay-project/images/blob/main/image12.jpg?raw=true',
     },
     {
       title: '두산 vs 롯데',
       date: '7월 22일 토 15:00 PM',
-      image: '/images/image1.png',
+      image: 'https://github.com/team-codeplay-project/images/blob/main/image1.png?raw=true',
     },
     {
       title: '롯데 vs SSG ',
       date: '7월 29일 토 18:00 PM',
-      image: '/images/image5.png',
+      image: 'https://github.com/team-codeplay-project/images/blob/main/image5.png?raw=true',
     },
   ];
 
