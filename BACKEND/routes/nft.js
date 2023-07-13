@@ -36,16 +36,13 @@ router.get('/', async (req, res) => {
   }
 });
 
-// 특정 nft 조회
+// 특정 nft 조회 전부
 router.get('/:account', async (req, res) => {
   try {
-    const account = req.params.account;
-    const isEndStr = req.query.isEnd;
-    const isEnd = JSON.parse(isEndStr);
-    const raffles = await client.nft.findMany({
+    const owner = req.params.account;
+    const nft = await client.nft.findMany({
       where: {
-        account,
-        isEnd,
+        owner,
       },
     });
     return res.json(nft);
@@ -55,17 +52,38 @@ router.get('/:account', async (req, res) => {
   }
 });
 
-// 옥션 조회 ( 종료 여부 )
-router.get('/', async (req, res) => {
+// 특정 nft 조회( 미사용 )
+router.get('/:account?no', async (req, res) => {
   try {
-    const isEndStr = req.query.isEnd;
-    const isEnd = JSON.parse(isEndStr);
-    const raffles = await client.auction.findMany({
+    const owner = req.params.account;
+    const isEndStr = req.query.isUsed;
+    const isUsed = JSON.parse(isEndStr);
+    const raffles = await client.nft.findMany({
       where: {
-        isEnd,
+        owner,
+        isUsed,
       },
     });
-    return res.json(raffles);
+    return res.json(nft);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'An error occurred' });
+  }
+});
+
+// 특정 nft 조회( 사용 )
+router.get('/:account?yes', async (req, res) => {
+  try {
+    const owner = req.params.account;
+    const isEndStr = req.query.isUsed;
+    const isUsed = JSON.parse(isEndStr);
+    const raffles = await client.nft.findMany({
+      where: {
+        owner,
+        isUsed,
+      },
+    });
+    return res.json(nft);
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'An error occurred' });

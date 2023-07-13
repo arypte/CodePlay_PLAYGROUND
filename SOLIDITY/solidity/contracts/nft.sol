@@ -12,30 +12,12 @@ contract NFT_c is ERC721("LIONTICKET", "LT") , Ownable {
 
     address sub_owner ;
     bonus_token private t_c ;
-    bool private sub_chk ;
     uint public price ;
+    uint public w_possible ;
     mapping( uint => address ) private buyer ; // 민팅한 사람
     mapping( uint => bool ) private chk_seat ; // true : 사용 false : 비사용
     mapping( uint => bool ) private chk_day ; // 특정 날짜 오픈
-    //  mapping( uint => uint ) proceeds ;
-
-    constructor( address _sub ) {
-        sub_owner = _sub ;
-    }
-
-    modifier sub_true() {
-        require( sub_chk == true ) ;
-        _ ;
-    }
-
-    function sub_change( address _sub ) public onlyOwner sub_true{
-        sub_owner = _sub ;
-    }
-
-    function sub_agree( bool _tf ) public {
-        require( msg.sender == sub_owner ) ;
-        sub_chk = _tf ;
-    }
+    mapping( uint => uint ) proceeds ;
 
     function set_t_c( bonus_token add ) public onlyOwner { // sub_true
         t_c = add ;
@@ -43,9 +25,12 @@ contract NFT_c is ERC721("LIONTICKET", "LT") , Ownable {
 
     function set_day( uint _day , bool _tf ) public onlyOwner { // sub_true
         chk_day[ _day ] = _tf ;
+        if( _tf == false ){
+            w_possible += proceeds[ _day ] ;
+        }
     }
 
-    function withdraw( uint _amount) public onlyOwner { // sub_true // 특정 경기의 수익금 출금
+    function withdraw( uint _amount ) public onlyOwner { // sub_true // 특정 경기의 수익금 출금
 
         payable( owner() ).transfer( _amount ) ;
 
@@ -57,9 +42,11 @@ contract NFT_c is ERC721("LIONTICKET", "LT") , Ownable {
 
     function buy_ticket( uint _day , uint _type ) public payable { // 민팅 후 좌석 정보 변경 
 
+        // require( balanceOf( msg.sender ) < 1 ) ;
         require( msg.value == price ) ;
         require( chk_day[ _day ] == true ) ;
 
+        proceeds[ _day ] += price ;
         uint _tokenID = plus( _day , _type ) ;
         _safeMint( msg.sender , _tokenID ) ;
         buyer[ _tokenID ] = msg.sender ;
@@ -103,6 +90,7 @@ contract NFT_c is ERC721("LIONTICKET", "LT") , Ownable {
         _burn( _tokenID ) ;
         // 수수료 10%
         uint _refund = price * 9 / 10 ;
+        proceeds[ _day ] -= ( price - _refund ) ;
         payable( msg.sender ).transfer( _refund ) ;
         
     }
@@ -128,9 +116,7 @@ contract NFT_c is ERC721("LIONTICKET", "LT") , Ownable {
         while( _b >= temp ) {
             temp *= 10 ;
         }
-
         return _a * temp + _b ;
-
         }
         
     }

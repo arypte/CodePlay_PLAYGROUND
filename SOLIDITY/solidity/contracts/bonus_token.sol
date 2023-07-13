@@ -3,16 +3,22 @@ pragma solidity ^0.8.18;
 
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
-import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol";
 import "./nft.sol" ;
+import "./vrf.sol" ;
 
-contract bonus_token is ERC20("AToken", "AT") , ERC20Burnable , Ownable {
+contract bonus_token is ERC20("AToken", "AT") , Ownable {
 
     NFT_c nft_contract ;
+    VRFv2Consumer v_c = VRFv2Consumer( 0x8acbDe6A8F4a9fC9B95509bcb8EcA1da5a83ae65 ) ;
+    uint price = 0 ;
 
     // OVERRIDE & REDEFINED FUNCTIONS
     function decimals() override public pure returns( uint8 ){
         return 0 ;
+    }
+
+    function setprice( uint _n ) public onlyOwner() {
+        price = _n ;
     }
 
     function set_n_c( address add ) public onlyOwner(){
@@ -31,7 +37,7 @@ contract bonus_token is ERC20("AToken", "AT") , ERC20Burnable , Ownable {
 
         // 참여조건 토큰 1개 보유
         // 토큰 1개 내야함
-        // burn( msg.sender , 1 ) ;
+        // burn( msg.sender , price ) ;
         emit Raffle( _n , msg.sender ) ;
         
     }
@@ -40,15 +46,20 @@ contract bonus_token is ERC20("AToken", "AT") , ERC20Burnable , Ownable {
 
         // 참여조건 토큰 1개 보유
         // 토큰 1개 내야함
-        // burn( msg.sender , 1 ) ;
+        if( price > 0 ){
+        burn( msg.sender , price ) ;
+        }
         emit Auction( _n , msg.sender , _bid ) ;
         
     }
 
     function Raffle_End( uint _n , uint num ) public view returns( uint ) {//onlyOwner() returns( uint ) {
-        uint r = uint( keccak256(abi.encodePacked(block.number , block.timestamp , _n , msg.sender ))) ;
-        r %= num ;
+        uint r = v_c.getR() % num ;
         return r ;
+    }
+
+    function burn( address sender , uint256 amount) internal {
+        _burn( sender , amount) ;
     }
 
 }

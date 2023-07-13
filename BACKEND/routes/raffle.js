@@ -43,12 +43,12 @@ router.get('/', async (req, res) => {
 });
 
 // 특정 래플 조회
-router.get('/:id', async (req, res) => {
+router.get('/:address', async (req, res) => {
   try {
-    const id = parseInt(req.params.id, 10);
+    const address = req.params.address;
 
-    const raffle = await client.raffle.findUnique({
-      where: { id },
+    const raffle = await client.raffle.findMany({
+      where: { winner: address },
     });
     return res.json(raffle);
   } catch (error) {

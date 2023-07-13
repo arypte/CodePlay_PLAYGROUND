@@ -14,41 +14,9 @@ const EventPage = () => {
   const { account, getbalance } = useContext(AppContext);
   const [page, setPage] = useState(1);
   const [sp, setSp] = useState(1);
+  const [items, setItems] = useState();
   let content;
   let buttonGroup = null;
-
-  const items = [
-    {
-      id: 1,
-      image: 'product1.jpg',
-      name: '아이템 1',
-      description: '아이템 1에 대한 설명',
-    },
-    {
-      id: 2,
-      image: 'product2.jpg',
-      name: '아이템 2',
-      description: '아이템 2에 대한 설명',
-    },
-    {
-      id: 3,
-      image: 'product3.jpg',
-      name: '아이템 3',
-      description: '아이템 3에 대한 설명',
-    },
-    {
-      id: 4,
-      image: 'product4.jpg',
-      name: '아이템 4',
-      description: '아이템 4에 대한 설명',
-    },
-    {
-      id: 5,
-      image: 'product5.jpg',
-      name: '아이템 5',
-      description: '아이템 5에 대한 설명',
-    },
-  ];
 
   const handleTabClick = (tabIndex) => {
     setActiveTab(tabIndex);
@@ -97,6 +65,30 @@ const EventPage = () => {
       setIsLoading(false);
     } catch (error) {
       console.log(error);
+      setIsLoading(false);
+    }
+  };
+
+  const getitem = async () => {
+    setIsLoading(true);
+
+    try {
+      console.log(
+        `${process.env.REACT_APP_BACKEND_URL}/raffle/${account.address}`
+      );
+      const response = await axios.get(
+        `${process.env.REACT_APP_BACKEND_URL}/raffle/${account.address}`,
+        {
+          headers: {
+            'ngrok-skip-browser-warning': 'any',
+          },
+        }
+      );
+      setItems(response.data);
+      console.log(response);
+      setIsLoading(false);
+    } catch (error) {
+      console.error(error);
       setIsLoading(false);
     }
   };
@@ -153,6 +145,8 @@ const EventPage = () => {
       get_Raffle_Data();
     } else if (activeTab === 2) {
       get_Auction_Data();
+    } else if (activeTab === 3) {
+      getitem();
     }
 
     setSp(1);
@@ -221,19 +215,30 @@ const EventPage = () => {
   } else if (activeTab === 3) {
     content = (
       <div>
-        {items.map((item) => (
-          <div className="item-box" key={item.id}>
-            <div className="item">
-              <div className="item-image-container">
-                <img src={item.image} alt={item.name} className="item-image" />
-              </div>
-              <div className="item-content">
-                <h3 className="item-name">{item.name}</h3>
-                <p className="item-description">{item.description}</p>
-              </div>
+        {isLoading ? (
+          <div>loading</div>
+        ) : (
+          <div>
+            <div>
+              {items?.map((item) => (
+                <div className="item-box" key={item.id}>
+                  <div className="item">
+                    <div className="item-image-container">
+                      <img
+                        src={item.url}
+                        alt={item.name}
+                        className="item-image"
+                      />
+                    </div>
+                    <div className="item-content">
+                      <h3 className="item-name">{item.name}</h3>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
-        ))}
+        )}
       </div>
     );
   }
