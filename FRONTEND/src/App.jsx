@@ -1,7 +1,7 @@
 import React from 'react';
 import { createContext, useEffect, useState } from 'react';
 import './index.css';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import Footer from './components/footer';
 import Header from './components/header';
 import StatusBar from './components/statusbar';
@@ -110,6 +110,7 @@ function App() {
               <Route path="/RFDetail/:idx" element={<RfDetailPage />} />
               <Route path="/ATDetail/:idx" element={<ATDetailPage />} />
               <Route path="/NFTDetail/:idx" element={<NftDetail />} />
+              <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
             <Footer />
           </div>
