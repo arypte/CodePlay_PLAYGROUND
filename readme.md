@@ -34,12 +34,18 @@ npm run dev
 ```
 
 ## 업데이트 내역
-* 0.4.0
-    * DB 연동
-* 0.3.0
+* 0.2.3
     * 백엔드 개발시작 `express`
+* 0.2.2
+    * COMPONENTS 분리
+* 0.2.1
+    * 레이아웃 완성
 * 0.2.0
     * 프론트 개발시작 `CRA`
+* 0.1.3
+    * 가스비 효율을 위해 `EVENT EMIT` 사용
+* 0.1.2
+    * `RAFFLE` `AUCTION` 기능 개발시작
 * 0.1.1
     * Solidity OpenZeppelin 사용 `ERC20` , `ERC721` , `owanable`
 * 0.1.0
