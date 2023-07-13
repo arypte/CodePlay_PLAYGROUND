@@ -1,4 +1,4 @@
-# 프로젝트명 PLAYGROUND
+# PLAYGROUND
 > 암표방지 야구티켓 NFT 프로젝트
 
 [![NPM Version][npm-image]][npm-url]
@@ -37,7 +37,7 @@ npm run dev
 * 0.3.0
     * 백엔드 개발시작 `express`
 * 0.2.0
-    * 프론트 개발시작 `CRA`
+    * 프론트 개발시작 `CRA`
 * 0.1.1
     * Solidity OpenZeppelin 사용 `ERC20` , `ERC721` , `owanable`
 * 0.1.0
