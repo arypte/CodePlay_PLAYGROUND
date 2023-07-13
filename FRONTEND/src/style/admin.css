@@ -4,6 +4,7 @@
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
   transform: translateY(0);
   transition: transform 0.3s;
+  background-color: #ffffff; /* Set background color */
 }
 
 .tab {
@@ -13,7 +14,7 @@
   font-size: 16px;
   font-weight: bold;
   color: #000000;
-  background-color: white;
+  background-color: transparent; /* Remove background color */
   border: none;
   outline: none;
   cursor: pointer;
@@ -33,31 +34,29 @@
   transform: translateY(-2px);
 }
 
-/* 가격 */
+/* Product and Price Containers */
+.product-container2,
+.price-container,
 .product3-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 20px;
-}
-
-.product3-box {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   background-color: #ffffff;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
-  outline: none;
+  margin-top: 20px;
+}
+
+.product3-box,
+.price-container2 {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   width: 100%;
   max-width: 400px;
   margin: 0 auto;
-}
-
-.product3-box:hover,
-.product3-box:focus {
-  transform: translateY(-5px);
 }
 
 .product3-image {
@@ -82,21 +81,50 @@
   margin: 0;
 }
 
-/* 가격 관리자 */
-.price-container {
-  margin-top: 20px;
-  padding: 20px;
-  background-color: #f7f7f7;
-  border-radius: 10px;
+/* Form Styling */
+.product-container2 form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
 }
 
+.product-container2 form input,
+.price-input {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  width: 100%;
+}
+
+.product-container2 form button,
+.price-button {
+  padding: 12px 24px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-size: 16px;
+  width: 100%;
+}
+
+.product-container2 form button:hover,
+.price-button:hover {
+  background-color: #0056b3;
+}
+
+/* Additional Styling */
 .price-container h2 {
   font-size: 20px;
   font-weight: bold;
   margin-bottom: 16px;
 }
 
-.price-input {
+.price-container input {
   display: block;
   width: 100%;
   padding: 12px;
@@ -107,89 +135,27 @@
 }
 
 .price-button {
-  background-color: #007bff;
-  color: #fff;
-  padding: 12px 24px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  font-size: 16px;
+  margin-bottom: 0;
+  margin-top: 10px;
 }
 
-.price-button:hover {
-  background-color: #0056b3;
-}
-
-/* 래플 */
-.product-container2 {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 20px;
-}
-
-.product-container2 form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 20px;
-}
-
-.product-container2 form input {
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 16px;
-}
-
-.product-container2 form button {
-  padding: 12px 24px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  font-size: 16px;
-}
-
-.product-container2 form button:hover {
-  background-color: #0056b3;
-}
-
-.product-container2 button {
-  padding: 12px 24px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  font-size: 16px;
-}
-
-.product-container2 button:hover {
-  background-color: #0056b3;
-}
-
-.product-container2 button + button {
+.product-gallery {
   margin-top: 20px;
 }
 
-.product-container2 div {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #ffffff;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  max-width: 350px;
-  margin: 0 auto;
+.raffle-end-button {
+  padding: 12px 24px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-size: 16px;
+  margin-top: -40px;
 }
 
-.product-container2 div button {
-  margin-top: 20px;
+.raffle-end-button:hover {
+  background-color: rgb(131, 131, 131);
+  transform: translateY(-2px);
 }

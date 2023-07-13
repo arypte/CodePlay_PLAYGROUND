@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "../style/RFDetail.css";
 
 const GameDetailPage = () => {
@@ -6,15 +7,11 @@ const GameDetailPage = () => {
     console.log("BUYING...");
   };
 
-  const handleUse = () => {
-    console.log("GO BACK...");
-  };
-
   return (
     <div className="container">
       <div className="nft-details">
         <div className="nft-image">
-          <img src="/images/image12.jpg" alt="NFT 이미지" />{" "}
+          <img src="/images/image12.jpg" alt="NFT 이미지" />
         </div>
         <div className="nft-info">
           <h1 className="nft-title">두산 베어스 VS 삼성 라이온즈</h1>
@@ -22,9 +19,9 @@ const GameDetailPage = () => {
         </div>
       </div>
       <div className="buttons">
-        <button className="button" onClick={handleUse}>
+        <Link to="/" className="button">
           돌아가기
-        </button>
+        </Link>
       </div>
     </div>
   );

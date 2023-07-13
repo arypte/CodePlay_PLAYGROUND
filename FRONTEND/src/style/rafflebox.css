@@ -263,25 +263,15 @@
   background-color: #e7e7e7;
 }
 
-.page-button {
-  background-color: #ffafa4;
-  border: none;
-  color: #1a1a1a;
-  padding: 0px 3px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 2px;
-  margin: 2px 2px;
+.pbutton {
+  border-radius: 50px;
+  width: 20px;
+  height: 20px;
+  background-color: #ccc;
+  margin-right: 5px;
   margin-bottom: 10px;
-
-  cursor: pointer;
-  border-radius: 100px;
-  transition-duration: 0.4s;
 }
 
-.page-button:hover {
-  background-color: white;
-  color: #ffafa4;
-  border: 2px solid#ffafa4;
+.text-base {
+  color: transparent;
 }
