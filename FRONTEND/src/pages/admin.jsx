@@ -242,7 +242,7 @@ const AdminPage = ({ admin }) => {
             data?.map((v, i) => {
               return (
                 <button key={i} onClick={() => RaffleEnd(v.id)}>
-                  {v.id}번 래플 종료
+                  {v.name} 래플 종료
                 </button>
               );
 
