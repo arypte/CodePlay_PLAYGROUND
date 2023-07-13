@@ -159,7 +159,7 @@ const Header = () => {
                       티켓 수 : {mynft} : 토큰 수 : {mytoken}
                     </li>
                     <li className="menu-item">MY 티켓</li>
-                    <li className="menu-item">MY 정보</li>
+                    
                   </div>
                 )}
               </ul>
