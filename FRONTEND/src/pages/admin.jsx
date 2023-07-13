@@ -131,21 +131,6 @@ const AdminPage = ({ admin }) => {
       });
 
       console.log('delete ing~');
-
-      if (a.length === 0) {
-        await axios.put(
-          `${process.env.REACT_APP_BACKEND_URL}/raffle/${n}}/done`,
-          {
-            end_block: E,
-          },
-          {
-            headers: {
-              'ngrok-skip-browser-warning': 'any',
-            },
-          }
-        );
-        get_Data();
-      }
     } catch (error) {
       console.error(error);
     }
