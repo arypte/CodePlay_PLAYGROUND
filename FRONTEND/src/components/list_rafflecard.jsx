@@ -6,10 +6,6 @@ const RaffleCard = ({ r_data }) => {
     console.log(`Entering raffle for ${r_data.name}`);
   };
 
-  useEffect( () => {
-  console.log( r_data.url ) ;
-  } , [] ) ;
-
   return (
     <div className="product-box ">
       <img className="product-image" src ={r_data.url}></img>
