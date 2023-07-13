@@ -60,8 +60,7 @@ router.get('/winner/:address', async (req, res) => {
 // 특정 id 래플 조회
 router.get('/:id', async (req, res) => {
   try {
-    const id = req.params.id;
-
+    const id = parseInt(req.params.id, 10);
     const raffle = await client.raffle.findUnique({
       where: { id },
     });

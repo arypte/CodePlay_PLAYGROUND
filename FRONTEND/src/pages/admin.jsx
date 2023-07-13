@@ -177,14 +177,13 @@ const AdminPage = ({ admin }) => {
       } else {
         ARdata = 'auction';
       }
+
       const response = await axios.get(
         `${process.env.REACT_APP_BACKEND_URL}/${ARdata}`,
         {
           params: {
             isEnd: false,
           },
-        },
-        {
           headers: {
             'ngrok-skip-browser-warning': 'any',
           },
@@ -224,7 +223,6 @@ const AdminPage = ({ admin }) => {
               onChange={(e) => setName(e.target.value)}
             />
             <button className="p-2 m-2">래플 생성</button>
-            <button className="p-2 m-2">생성 완료</button>
           </form>
 
           {isLoading ? (

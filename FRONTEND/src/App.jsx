@@ -15,6 +15,8 @@ import { n_abi, n_addr, t_abi, t_addr } from './raffletest.config';
 import Web3 from 'web3';
 import LoginPage from './pages/login';
 import TicketBooking from './pages/Ticket2';
+import RfDetailPage from './components/RFdetail';
+import ATDetailPage from './components/ATdetail';
 
 export const AppContext = createContext();
 
@@ -104,6 +106,8 @@ function App() {
               <Route path="/LoginPage" element={<LoginPage />} />
               <Route path="/AdminPage" element={<AdminPage admin={admin} />} />
               <Route path="/nft" element={<Nfttest />} />
+              <Route path="/RFDetail/:idx" element={<RfDetailPage />} />
+              <Route path="/ATDetail/:idx" element={<ATDetailPage />} />
             </Routes>
             <Footer />
           </div>

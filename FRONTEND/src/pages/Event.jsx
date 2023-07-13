@@ -34,7 +34,7 @@ const EventPage = () => {
         <button
           key={i}
           className={`page-button
-          ${i + 1 === 1 ? 'text-white' : 'text-gray-400'}`}
+          ${i + 1 === sp ? 'text-white' : 'text-gray-400'}`}
           onClick={onClickPage(i + 1)}
         >
           {i + 1} <span className="text-base"></span>
