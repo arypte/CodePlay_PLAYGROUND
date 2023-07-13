@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "../style/RFDetail.css";
 
-const RfDetailPage = () => {
+const ATDetailPage = () => {
   const [nftData, setNftData] = useState({
     image: "",
     title: "",
@@ -26,7 +26,7 @@ const RfDetailPage = () => {
   };
 
   const handleEntry = () => {
-    console.log("Entering raffle...");
+    console.log("Entering Auction...");
     // 응모하기 버튼 동작 내용
   };
 
@@ -58,4 +58,4 @@ const RfDetailPage = () => {
   );
 };
 
-export default RfDetailPage;
+export default ATDetailPage;
