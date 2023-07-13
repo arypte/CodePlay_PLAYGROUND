@@ -1,0 +1,166 @@
+/*위 박스*/
+.home-gallery {
+  width: 100%;
+  height: auto;
+  overflow-y: auto;
+  background-color: rgba(255, 255, 255, 0.994);
+  padding-left: 20px;
+  padding-right: 20px;
+  z-index: 1;
+  box-shadow: 0px 6px px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.black-shape-container {
+  display: flex;
+  justify-content: center;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  transform: translateY(0);
+  transition: transform 0.3s;
+}
+
+.black-shape {
+  flex: 1;
+  padding: 6px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  background-color: black;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: color 0.3s, transform 0.3s;
+  transform: translateY(0);
+  z-index: 2;
+}
+
+.ticket-gallery {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  height: 280px;
+  border-radius: 20px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.gallery-container {
+  display: inline-flex;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.ticket-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 5px;
+  text-align: center;
+  position: relative;
+  border-radius: 2cqi;
+}
+
+.ticket-image {
+  width: 380px;
+  height: 280px;
+  background-color: #ccc;
+  border-radius: 20px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* background-image: url(path/to/your/image.jpg); */
+}
+
+.ticket-info {
+  position: absolute;
+  bottom: 0;
+  height: 80px;
+  width: 100%;
+  padding: 10px;
+  padding-top: 20px;
+  background-color: rgba(0, 0, 0, 0.563);
+  color: #ffffffe2;
+  text-align: center;
+  border-radius: 0 0 20px 20px;
+}
+
+/*아래 박스*/
+.icard {
+  display: flex;
+  background-color: rgba(255, 255, 255, 0.994);
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin-top: 6px;
+}
+
+/* .icard-image {
+  flex: 0 0 40%;
+  max-width: 40%;
+} */
+
+/* 
+.icard-image img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+} */
+
+.icard-container {
+  height: 320px;
+  overflow-y: auto;
+  z-index: 2;
+  margin-left: -20px;
+  margin-right: -20px;
+  background-color: rgba(255, 255, 255, 0.994);
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.icard-image-placeholder {
+  flex: 0 0 40%;
+  max-width: 40%;
+
+  width: 100%;
+  height: 100px;
+  background-size: cover;
+}
+
+.icard-content {
+  flex: 1;
+  padding: 10px;
+}
+
+.icard-title {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.icard-updated {
+  font-size: 12px;
+  color: #888;
+}
+
+.icard-button-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: -36px;
+  margin-right: 25px;
+}
+
+.icard-button-wrapper {
+  margin-left: 10px;
+}
+
+.icard-button {
+  font-size: 20px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.icard-button:hover {
+  transform: scale(1.1);
+  color: #007aff;
+}

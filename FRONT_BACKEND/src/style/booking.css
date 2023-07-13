@@ -1,0 +1,438 @@
+/* 제목바 */
+.title2-container {
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  transform: translateY(0);
+  transition: transform 0.3s;
+}
+
+.title2 {
+  flex: 1;
+  padding: 6px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  background: black;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: color 0.3s, transform 0.3s;
+  transform: translateY(0);
+  z-index: 2;
+  position: relative;
+}
+
+/* 배경박스 */
+.ticket-booking-container {
+  margin: 20px auto;
+  margin-top: 80px;
+  padding: 20px;
+  padding-top: 20px;
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  width: 340px;
+  height: 874px;
+}
+
+.ticket-booking-container2 {
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  width: 340px;
+  height: 844px;
+}
+
+/* 경기선택 */
+.ticket-booking {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+/* .section-row {
+  display: flex;
+  flex-wrap: wrap;
+} */
+
+.section {
+  flex: 1 1 100%;
+  padding-top: 10px;
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  margin-bottom: 20px;
+  margin-top: 5px;
+}
+
+.section-icon {
+  margin-right: 10px;
+  font-size: 25px;
+}
+
+/* 구역선택 */
+.section2 {
+  flex: 1 1 100%;
+  padding-top: 20px;
+}
+
+.section2-title {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  margin-bottom: 20px;
+  margin-top: 5px;
+}
+
+.section2-icon {
+  margin-right: 10px;
+  font-size: 26px;
+}
+
+.seat-select {
+  margin-top: 0px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 좌석 선택 */
+.section3 {
+  flex: 1 1 100%;
+  padding-top: 20px;
+}
+
+.section3-title {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  margin-bottom: 20px;
+  margin-top: 5px;
+}
+
+.section3-icon {
+  margin-right: 10px;
+  font-size: 26px;
+}
+
+.seat-select2 {
+  margin-top: 0px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 좌석선택 버튼 */
+.seat-selection-button {
+  width: 100%;
+  height: 40px;
+  border: none;
+  margin-top: 30px;
+  border-radius: 4px;
+  background-color: white;
+  color: #007bff;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.seat-selection-button:hover {
+  background-color: #f0f0f0;
+  transform: translateY(-2px);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.seat-selection-button:active {
+  background-color: #d0d0d0;
+  transform: translateY(0);
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* 예매하기 버튼 */
+.book-button {
+  display: block;
+  width: 100%;
+  margin-top: 20px;
+  padding: 12px;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+.book-button:hover {
+  background-color: #0056b3;
+}
+
+/* 닫기 버튼 */
+.close-button {
+  width: 80px;
+  height: 40px;
+  border: none;
+  border-radius: 4px;
+  background-color: #f0f0f0;
+  color: #333;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  margin: 0 auto;
+  display: block;
+}
+
+.close-button:hover {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.booking-container {
+  width: 100%;
+  max-width: 380px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ticket-quantity {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.ticket-quantity h2 {
+  color: #007aff;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.ticket-quantity input {
+  width: 56px;
+  height: 35px;
+  padding: 0;
+  border: 1px solid #007aff;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 16px;
+  margin-bottom: 2px;
+}
+
+.selected-seats-card {
+  width: 100%;
+  max-width: 380px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.ticket-list {
+  display: flex;
+  overflow-x: auto;
+  gap: 11px;
+  padding-bottom: 8px;
+  margin-bottom: -8px;
+}
+
+.ticket-item {
+  padding: 6px 14px;
+  padding-left: 29px;
+  padding-right: 28px;
+  text-align: center;
+  border-radius: 4px;
+  background-color: #f0f0f0;
+  color: #333;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.ticket-item p {
+  margin: 0;
+  font-size: 16px;
+}
+
+.ticket-item.selected {
+  background-color: #007bff;
+  color: #fff;
+  pointer-events: auto;
+}
+
+.dropdown-select {
+  flex: 1;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background-color: #f0f0f0;
+  color: #333;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-bottom: 10px;
+  max-width: 300px;
+  width: 100%;
+}
+
+.react-dropdown-select-dropdown {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.react-dropdown-select-item {
+  padding: 8px;
+  background-color: #f0f0f0;
+  transition: background-color 0.3s ease;
+}
+
+.react-dropdown-select-item:hover {
+  background-color: #d0d0d0;
+}
+
+.react-dropdown-select-item.react-dropdown-select-item-selected {
+  background-color: #007bff;
+  color: #fff;
+}
+
+/* 좌석 선택 페이지 */
+
+.modal-overlay {
+  position: fixed;
+  margin-top: 10px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 390px;
+  height: 646px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(29, 29, 29, 0.295);
+  z-index: 9999;
+}
+
+.seat-selection-modal {
+  background-color: #fff;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  padding-left: 25px;
+  width: 90%;
+  max-width: 500px;
+  padding-bottom: 30px;
+}
+
+.seat-container {
+  width: 300px;
+  height: 200px;
+  background-color: #fff;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  padding: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.seat-container h2 {
+  color: #007aff;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.seat-map {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.seat {
+  display: inline-block;
+  width: 11px;
+  height: 11px;
+  background-color: rgba(0, 122, 255, 0.3);
+  border: none;
+  margin: 2px;
+  text-align: center;
+  line-height: 20px;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: background-color 0.3s ease;
+}
+
+.seat-reserved {
+  display: inline-block;
+  width: 11px;
+  height: 11px;
+  background-color: rgba(255, 122, 255, 0.3);
+  border: none;
+  margin: 2px;
+  text-align: center;
+  line-height: 20px;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: background-color 0.3s ease;
+}
+
+.seat.selected {
+  background-color: #007aff;
+  color: white;
+  transform: scale(1.1);
+}
+
+.selected-seats-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  background-color: #fff;
+  box-shadow: 0 0 7px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.selected-seats {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.selected-seats h2 {
+  color: #007bff;
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.selected-seats ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.selected-seats li {
+  display: inline-block;
+  font-size: 16px;
+  margin-right: 10px;
+  margin-bottom: 5px;
+  color: #007bff;
+}
