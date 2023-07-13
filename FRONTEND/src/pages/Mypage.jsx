@@ -92,11 +92,9 @@ const Mypage = () => {
                 </div>
               )}
               {activeTab === 3 && (
-                <div class="container">
-                  <div class="user-info">
-                    <div class="user-box">
-                      <h4>{account.name}</h4>
-                    </div>
+                <div class="user-info">
+                  <div class="user-box">
+                    <h4>{account.name}</h4>
                   </div>
                   <div class="tokens-tickets">
                     <div class="token-container">

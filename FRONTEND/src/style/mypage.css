@@ -128,7 +128,6 @@
 }
 
 /*마이페이지 tab3 페이지*/
-/* 전체 컨테이너 스타일 */
 .container {
   display: flex;
   flex-direction: column;
@@ -137,20 +136,11 @@
   font-family: Arial, sans-serif;
 }
 
-/* 마이페이지 타이틀 스타일 */
-h2 {
-  color: #333;
-  font-size: 20px;
-  margin-bottom: 20px;
-}
-
-/* 유저 정보 컨테이너 스타일 */
 .user-info {
   text-align: center;
   margin-bottom: 30px;
 }
 
-/* 유저 이름 박스 스타일 */
 .user-box {
   display: inline-block;
   padding: 20px;
@@ -158,30 +148,26 @@ h2 {
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   width: 300px;
-  margin-top: -30px;
+  margin-top: 0px;
 }
 
-/* 유저 이름 스타일 */
 h4 {
   color: #555;
   font-size: 24px;
   margin-bottom: 5px;
 }
 
-/* 유저 전화번호 스타일 */
 p {
   color: #777;
   font-size: 16px;
 }
 
-/* 토큰, 티켓 컨테이너 스타일 */
 .tokens-tickets {
   display: flex;
   justify-content: space-between;
   margin-bottom: 20px;
-  width: 90%;
-  width: 310px;
-  margin-top: -7px;
+  width: 100%;
+  max-width: 400px;
 }
 
 .token-container,
@@ -189,23 +175,22 @@ p {
   text-align: center;
   background-color: #efeeee76;
   border-radius: 5px;
-  flex: 1; /* 같은 크기로 설정 */
+  flex: 1;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  margin: 0 8px; /* 컨테이너 사이의 간격 */
-  padding-top: 10px;
+  margin-top: 30px;
+  padding: 5px;
+  width: 300px;
 }
 
-/* 로그아웃 버튼 스타일 */
 .button2 {
   padding: 10px 20px;
   width: 300px;
-  background-color: #000000;
-  color: #fff;
+  background-color: transparent; /* Remove the background color */
   font-size: 16px;
-  border: black;
   border-radius: 5px;
   cursor: pointer;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
 }
 
 .button2:hover {
@@ -215,4 +200,10 @@ p {
 
 .button2:focus {
   outline: none;
+}
+.token-container + .ticket-container {
+  margin-left: 14px;
+}
+.ticket-container + .token-container {
+  margin-left: 14px;
 }
