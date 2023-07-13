@@ -39,7 +39,7 @@ const RfDetailPage = () => {
 
         for (const v of a) {
           const nowdata = v.returnValues._add.toLowerCase();
-          if (nowdata === account) {
+          if (nowdata === account.address) {
             setChkScreen(1);
             break; // 중지
           }
@@ -57,7 +57,9 @@ const RfDetailPage = () => {
   const onclickRaffle_participate = async () => {
     setIsLoading(true);
     try {
-      await token_c.methods.Auction_participate(idx).send({ from: account });
+      await token_c.methods
+        .Auction_participate(idx)
+        .send({ from: account.address });
       get_R_data();
     } catch (error) {
       setIsLoading(false);
@@ -86,9 +88,9 @@ const RfDetailPage = () => {
             </div>
           </div>
           {chkscreen === 2 ? (
-            <div> 래플 종료 </div>
+            <div className="button"> 래플 종료 </div>
           ) : chkscreen === 1 ? (
-            <div> 이미 참가 </div>
+            <div className="button"> 응모됨 </div>
           ) : (
             <div className="buttons">
               <button className="button" onClick={onclickRaffle_participate}>
