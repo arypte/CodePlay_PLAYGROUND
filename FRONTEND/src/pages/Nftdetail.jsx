@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import '../style/RFDetail.css';
 import { AppContext } from '../App';
 import axios from 'axios';
@@ -10,6 +10,7 @@ const NftDetail = () => {
   const [data, setData] = useState();
   const { account, nft_c } = useContext(AppContext);
   const { idx } = useParams();
+  const navigate = useNavigate();
 
   const get_Data = async () => {
     try {
@@ -59,7 +60,43 @@ const NftDetail = () => {
     }
   };
 
+  const refundticket = async (e) => {
+    e.preventDefault();
+
+    try {
+      // console.log( account ) ;
+
+      await nft_c.methods.refund(data.day, data.type).send({
+        from: account.address,
+      });
+
+      await axios.delete(
+        `${process.env.REACT_APP_BACKEND_URL}/nft`,
+        {
+          data: {
+            day: Number(data.day),
+            type: Number(data.type),
+            owner: account.address,
+          },
+        },
+        {
+          headers: {
+            'ngrok-skip-browser-warning': 'any',
+          },
+        }
+      );
+
+      console.log('delete end!');
+      navigate('/mypage');
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   useEffect(() => {
+    if (!account) {
+      navigate('/');
+    }
     get_Data();
   }, []);
 
@@ -83,6 +120,9 @@ const NftDetail = () => {
             <div className="buttons">
               <button className="button" onClick={useticket}>
                 사용하기
+              </button>
+              <button className="button" onClick={refundticket}>
+                환불하기
               </button>
             </div>
           )}
