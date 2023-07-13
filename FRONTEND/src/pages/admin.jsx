@@ -97,7 +97,7 @@ const AdminPage = ({ admin }) => {
       setE(end_block);
 
       const response = await axios.get(
-        `${process.env.REACT_APP_BACKEND_URL}/Auction/${key}`,
+        `${process.env.REACT_APP_BACKEND_URL}/raffle/${key}`,
         {
           headers: {
             'ngrok-skip-browser-warning': 'any',
@@ -108,7 +108,7 @@ const AdminPage = ({ admin }) => {
       const f_B = response.data.start_block; // fromBlock : 은 디비에서
       const e_B = end_block;
 
-      const a = await token_c.getPastEvents('Auction', {
+      const a = await token_c.getPastEvents('Raffle', {
         filter: { _idx: key },
         fromBlock: f_B,
         toBlock: e_B,
@@ -123,32 +123,43 @@ const AdminPage = ({ admin }) => {
           setWinner((prev) => [...prev, nowdata]);
         }
       });
+
+      if (a.length === 0) {
+        await axios.put(
+          `${process.env.REACT_APP_BACKEND_URL}/raffle/${n}}/done`,
+          {
+            end_block: E,
+          },
+          {
+            headers: {
+              'ngrok-skip-browser-warning': 'any',
+            },
+          }
+        );
+      }
     } catch (error) {
       console.error(error);
     }
   };
 
   const get_R_winner = async () => {
-    let idx = await token_c.methods.Raffle_End(n, winner.length).call();
-    // idx = Number(idx);
-    console.log(idx, typeof idx);
+    if (winner.length != 0) {
+      let idx = await token_c.methods.Raffle_End(n, winner.length).call();
+      // idx = Number(idx);
 
-    await axios.put(
-      `${process.env.REACT_APP_BACKEND_URL}/raffle/${n}}/done`,
-      {
-        end_block: E,
-        winner: winner[idx],
-      },
-      {
-        headers: {
-          'ngrok-skip-browser-warning': 'any',
+      await axios.put(
+        `${process.env.REACT_APP_BACKEND_URL}/raffle/${n}}/done`,
+        {
+          end_block: E,
+          winner: winner[idx],
         },
-      }
-    );
-
-    // console.log(winner) ;
-    // console.log( idx , winner[idx]) ;
-    console.log('Raffle_', n, ' is End');
+        {
+          headers: {
+            'ngrok-skip-browser-warning': 'any',
+          },
+        }
+      );
+    }
   };
 
   useEffect(() => {
