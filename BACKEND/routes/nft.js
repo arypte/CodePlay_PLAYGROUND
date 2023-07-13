@@ -36,6 +36,22 @@ router.get('/', async (req, res) => {
   }
 });
 
+// id 조회
+router.get('/id/:idx', async (req, res) => {
+  try {
+    const idx = parseInt(req.params.idx, 10);
+    const nft = await client.nft.findMany({
+      where: {
+        id: idx,
+      },
+    });
+    return res.json(nft);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'An error occurred' });
+  }
+});
+
 // 특정 nft 조회 전부
 router.get('/:account', async (req, res) => {
   try {

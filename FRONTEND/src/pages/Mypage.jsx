@@ -31,10 +31,10 @@ const Mypage = () => {
           }
         );
 
-        // let c = 0;
-        // response.data.map((v, i) => {
-        //   if (v.isUsed === true) c++;
-        // });
+        let c = 0;
+        response.data.map((v, i) => {
+          if (v.isUsed === true) c++;
+        });
         setData(response.data);
       }
     } catch (error) {
