@@ -1,11 +1,12 @@
 # PLAYGROUND
 > 암표방지 야구티켓 NFT 프로젝트
 
-[![NPM Version][npm-image]][npm-url]
-[![Build Status][travis-image]][travis-url]
-[![Downloads Stats][npm-downloads]][npm-url]
+![React Version][react-image]
+![Solidity Version][solidity-image]
+![Express_Version][express-image]
 
-한국 야구에 널리 퍼진 암표 성행으로 인해 피해를 보는 야구팬들에게 *블록체인을 활용한 NFT 야구 티켓 플랫폼 서비스를 제공 및 대안으로 제시*합니다.  
+한국 야구에 널리 퍼진 암표 성행으로 인해 피해를 보는 야구팬들에게
+*블록체인을 활용한 NFT 야구 티켓 플랫폼 서비스를 제공 및 대안으로 제시*합니다.  
 또한, NFT를 활용한 연계 서비스로 소비자에게 다양한 재미 요소를 제공하여 향후 한국 야구에 대한 관심이 고취될 것을 기대합니다.
 
 ![](../header.png)
@@ -53,9 +54,7 @@ XYZ 라이센스를 준수하며 ``LICENSE``에서 자세한 정보를 확인할
 
 
 <!-- Markdown link & img dfn's -->
-[npm-image]: https://img.shields.io/npm/v/datadog-metrics.svg?style=flat-square
-[npm-url]: https://npmjs.org/package/datadog-metrics
-[npm-downloads]: https://img.shields.io/npm/dm/datadog-metrics.svg?style=flat-square
-[travis-image]: https://img.shields.io/travis/dbader/node-datadog-metrics/master.svg?style=flat-square
-[travis-url]: https://travis-ci.org/dbader/node-datadog-metrics
-[wiki]: https://github.com/yourname/yourproject/wiki
+[solidity-image]: https://img.shields.io/badge/Solidity-0.8.19-blue
+[React-image]: https://img.shields.io/badge/React-v6-purple
+[Express-image]: https://img.shields.io/badge/Express-0.8.19-orange
+
