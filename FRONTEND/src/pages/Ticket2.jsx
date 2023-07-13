@@ -1,35 +1,34 @@
-import React, { useContext, useEffect, useState } from 'react';
-import Dropdown from 'react-dropdown-select';
-import { BiBaseball } from 'react-icons/bi';
-import { TbSection } from 'react-icons/tb';
-import { LuArmchair } from 'react-icons/lu';
-
-import '../style/booking.css';
-import { AppContext } from '../App';
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import React, { useContext, useEffect, useState } from "react";
+import Dropdown from "react-dropdown-select";
+import { BiBaseball } from "react-icons/bi";
+import { TbSection } from "react-icons/tb";
+import { LuArmchair } from "react-icons/lu";
+import "../style/booking.css";
+import { AppContext } from "../App";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const TicketBooking = () => {
   const tickets = [
-    { label: '두산:롯데', value: 1 },
-    { label: 'LG트윈스:기아', value: 2 },
+    { label: "두산:롯데", value: 1 },
+    { label: "LG트윈스:기아", value: 2 },
   ];
   const { web3, account, nft_c } = useContext(AppContext);
   const seatSections = [
     {
       value: 1,
-      label: '테이블석',
-      options: [{ value: 101, label: '1루 테이블석' }],
+      label: "테이블석",
+      options: [{ value: 101, label: "1루 테이블석" }],
     },
     {
       value: 2,
-      label: '네이비석',
-      options: [{ value: 201, label: '1루 네이비석' }],
+      label: "네이비석",
+      options: [{ value: 201, label: "1루 네이비석" }],
     },
     {
       value: 3,
-      label: '익사이팅존',
-      options: [{ value: 301, label: '1루 익사이팅존' }],
+      label: "익사이팅존",
+      options: [{ value: 301, label: "1루 익사이팅존" }],
     },
   ];
 
@@ -111,7 +110,7 @@ const TicketBooking = () => {
       const _type = type * 1000000 + block * 1000 + idx + 1;
       await nft_c.methods.buy_ticket(day, _type).send({
         from: account.address,
-        value: web3.utils.toWei('0.0001', 'ether'),
+        value: web3.utils.toWei("0.0001", "ether"),
       });
 
       await axios.post(
@@ -123,7 +122,7 @@ const TicketBooking = () => {
         },
         {
           headers: {
-            'ngrok-skip-browser-warning': 'any',
+            "ngrok-skip-browser-warning": "any",
           },
         }
       );
@@ -133,7 +132,7 @@ const TicketBooking = () => {
       setloading_mint(true);
       console.error(error);
     } finally {
-      navigate('/ticket');
+      navigate("/ticket");
       c_game();
     }
   };
@@ -147,7 +146,7 @@ const TicketBooking = () => {
   const navigate = useNavigate();
   useEffect(() => {
     if (!account) {
-      navigate('/');
+      navigate("/");
     }
   }, []);
 
@@ -170,10 +169,9 @@ const TicketBooking = () => {
                   <div
                     key={i}
                     className={`ticket-item ${
-                      game === v.value ? 'selected' : ''
+                      game === v.value ? "selected" : ""
                     }`}
-                    onClick={() => c_game(v.value)}
-                  >
+                    onClick={() => c_game(v.value)}>
                     <p>{v.label}</p>
                   </div>
                 ))}
@@ -236,7 +234,7 @@ const TicketBooking = () => {
                       ] === false ? (
                         <button
                           key={y}
-                          className={`m-1 w-8 h-5 border rounded-md border-gray-400 bg-white-100`}
+                          className="seat-button"
                           onClick={() =>
                             buyticket(
                               db[type - 1][x].sum +
@@ -244,17 +242,12 @@ const TicketBooking = () => {
                                 13 +
                                 db[type - 1][x].seats
                             )
-                          }
-                        ></button>
+                          }></button>
                       ) : (
-                        <div
-                          key={y}
-                          className={`m-1 w-8 h-5 border rounded-md border-gray-400 bg-red-100
-                      `}
-                        ></div>
+                        <div key={y} className="seat-selected"></div>
                       )
                     ) : (
-                      <div key={y} className={`m-1 w-8 h-5 bg-white`}></div>
+                      <div key={y} className="seat-empty"></div>
                     )
                   )}
                 </div>

@@ -362,7 +362,7 @@
   display: inline-block;
   width: 11px;
   height: 11px;
-  background-color: rgba(0, 122, 255, 0.3);
+  background-color: #007aff;
   border: none;
   margin: 2px;
   text-align: center;
@@ -376,7 +376,7 @@
   display: inline-block;
   width: 11px;
   height: 11px;
-  background-color: rgba(255, 122, 255, 0.3);
+  background-color: rgba(246, 25, 91, 0.97);
   border: none;
   margin: 2px;
   text-align: center;
@@ -435,4 +435,29 @@
   margin-right: 10px;
   margin-bottom: 5px;
   color: #007bff;
+}
+.seat-button {
+  margin: 4px;
+  width: 32px;
+  height: 20px;
+  border: 1px solid #cbd5e0;
+  border-radius: 10px;
+  background-color: #f7fafc;
+  cursor: pointer;
+}
+
+.seat-selected {
+  margin: 4px;
+  width: 32px;
+  height: 20px;
+  border: 1px solid #cbd5e0;
+  border-radius: 10px;
+  background-color: #fef2f2;
+}
+
+.seat-empty {
+  margin: 4px;
+  width: 32px;
+  height: 20px;
+  background-color: #fff;
 }

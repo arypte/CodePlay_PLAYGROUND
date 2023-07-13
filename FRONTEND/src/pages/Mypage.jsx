@@ -1,9 +1,9 @@
-import React, { useContext, useEffect, useState } from 'react';
-import '../style/mypage.css';
-import Nftcardlist from '../components/nftcardlist';
-import { AppContext } from '../App';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import React, { useContext, useEffect, useState } from "react";
+import "../style/mypage.css";
+import Nftcardlist from "../components/nftcardlist";
+import { AppContext } from "../App";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 // import { Container, Row, Col, Card, Button } from "react-bootstrap";
 // import { ChevronLeft } from "react-icons/ai";
 // import MyTicket from "../components/MyTicket";
@@ -26,7 +26,7 @@ const Mypage = () => {
           `${process.env.REACT_APP_BACKEND_URL}/nft/${account.address}`,
           {
             headers: {
-              'ngrok-skip-browser-warning': 'any',
+              "ngrok-skip-browser-warning": "any",
             },
           }
         );
@@ -45,7 +45,7 @@ const Mypage = () => {
   const navigate = useNavigate();
   useEffect(() => {
     if (!account) {
-      navigate('/');
+      navigate("/");
     }
     get_nft_data();
   }, []);
@@ -54,24 +54,21 @@ const Mypage = () => {
     <>
       <div className="tab3-container">
         <button
-          className={`tab3 ${activeTab === 1 ? 'active' : ''}`}
+          className={`tab3 ${activeTab === 1 ? "active" : ""}`}
           onClick={() => handleTabClick(1)}
-          role="tab"
-        >
+          role="tab">
           사용전
         </button>
         <button
-          className={`tab3 ${activeTab === 2 ? 'active' : ''}`}
+          className={`tab3 ${activeTab === 2 ? "active" : ""}`}
           onClick={() => handleTabClick(2)}
-          role="tab"
-        >
+          role="tab">
           사용완료
         </button>
         <button
-          className={`tab3 ${activeTab === 3 ? 'active' : ''}`}
+          className={`tab3 ${activeTab === 3 ? "active" : ""}`}
           onClick={() => handleTabClick(3)}
-          role="tab"
-        >
+          role="tab">
           내 토큰
         </button>
       </div>

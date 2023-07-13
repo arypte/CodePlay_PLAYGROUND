@@ -1,6 +1,6 @@
 import React from "react";
 import { IoIosArrowForward } from "react-icons/io";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "../style/home.css";
 
 const Homepage = ({ account }) => {

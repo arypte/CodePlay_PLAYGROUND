@@ -1,11 +1,10 @@
-import React, { useContext, useEffect, useState } from 'react';
-import '../style/booking.css';
-import '../style/seatselect.css';
-import Dropdown from 'react-dropdown-select';
-import { BiBaseball } from 'react-icons/bi';
-import { TbSection } from 'react-icons/tb';
-import { LuArmchair } from 'react-icons/lu';
-import { AppContext } from '../App';
+import React, { useContext, useEffect, useState } from "react";
+import "../style/booking.css";
+import Dropdown from "react-dropdown-select";
+import { BiBaseball } from "react-icons/bi";
+import { TbSection } from "react-icons/tb";
+import { LuArmchair } from "react-icons/lu";
+import { AppContext } from "../App";
 
 const SeatSelectionContainer = ({ onConfirm }) => {
   const [blocks, setblocks] = useState([]);
@@ -64,10 +63,10 @@ const SeatSelectionContainer = ({ onConfirm }) => {
   };
 
   useEffect(() => {
-    console.log('tq');
+    console.log("tq");
     if (block != 0 && block) {
       get_nft_data();
-      console.log('!!!');
+      console.log("!!!");
     }
   }, [block]);
 
@@ -101,7 +100,7 @@ const SeatSelectionContainer = ({ onConfirm }) => {
       const rowSeats = [];
 
       for (let seat = 1; seat <= seats; seat++) {
-        const seatNumber = seat.toString().padStart(2, '0');
+        const seatNumber = seat.toString().padStart(2, "0");
 
         const seatKey = `${row}${seatNumber}`;
         const isSelected = blocks.includes(seatKey);
@@ -118,23 +117,21 @@ const SeatSelectionContainer = ({ onConfirm }) => {
             {re[t] === true ? (
               <div
                 key={seatKey}
-                className={`seat ml-4 ${isSelected ? 'selected' : ''} `}
+                className={`seat ml-4 ${isSelected ? "selected" : ""} `}
                 style={{
                   marginLeft: blank,
-                  color: 'transparent',
+                  color: "transparent",
                 }}
-                onClick={(e) => handleSeatSelection(row, seatNumber)}
-              ></div>
+                onClick={(e) => handleSeatSelection(row, seatNumber)}></div>
             ) : (
               <div
                 key={seatKey}
-                className={`seat ml-4 ${isSelected ? 'selected' : ''} `}
+                className={`seat ml-4 ${isSelected ? "selected" : ""} `}
                 style={{
                   marginLeft: blank,
-                  color: 'transparent',
+                  color: "transparent",
                 }}
-                onClick={(e) => handleSeatSelection(row, seatNumber)}
-              ></div>
+                onClick={(e) => handleSeatSelection(row, seatNumber)}></div>
             )}
           </div>
         );
@@ -188,22 +185,22 @@ const TicketBooking = () => {
     settype();
   }, []);
 
-  const tickets = ['두산 : 롯데', 'LG 트윈스 : 기아'];
+  const tickets = ["두산 : 롯데", "LG 트윈스 : 기아"];
   const seatSections = [
     {
       value: 1,
-      label: '테이블석',
-      options: [{ value: 101, label: '1루 테이블석' }],
+      label: "테이블석",
+      options: [{ value: 101, label: "1루 테이블석" }],
     },
     {
       value: 2,
-      label: '네이비석',
-      options: [{ value: 201, label: '1루 네이비석' }],
+      label: "네이비석",
+      options: [{ value: 201, label: "1루 네이비석" }],
     },
     {
       value: 3,
-      label: '익사이팅존',
-      options: [{ value: 301, label: '1루 익사이팅존' }],
+      label: "익사이팅존",
+      options: [{ value: 301, label: "1루 익사이팅존" }],
     },
   ];
 
@@ -246,9 +243,8 @@ const TicketBooking = () => {
             {tickets.map((ticket) => (
               <div
                 key={ticket}
-                className={`ticket-item ${game === ticket ? 'selected' : ''}`}
-                onClick={() => handleTicketClick(ticket)}
-              >
+                className={`ticket-item ${game === ticket ? "selected" : ""}`}
+                onClick={() => handleTicketClick(ticket)}>
                 <p>{ticket}</p>
               </div>
             ))}
@@ -301,8 +297,7 @@ const TicketBooking = () => {
                   )}
                   <button
                     className="seat-selection-button"
-                    onClick={handleSeatSelectionClick}
-                  >
+                    onClick={handleSeatSelectionClick}>
                     좌석 선택하기
                   </button>
                 </>
