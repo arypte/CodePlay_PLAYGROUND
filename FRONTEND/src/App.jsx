@@ -1,27 +1,28 @@
-import React from 'react';
-import { createContext, useEffect, useState } from 'react';
-import './index.css';
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
-import Footer from './components/footer';
-import Header from './components/header';
-import StatusBar from './components/statusbar';
-import EventPage from './pages/Event';
-import Homepage from './pages/Home';
-import ReactPlayer from 'react-player';
-import Mypage from './pages/Mypage';
-import Nfttest from './pages/Nfttest';
-import AdminPage from './pages/admin';
-import { n_abi, n_addr, t_abi, t_addr } from './raffletest.config';
-import Web3 from 'web3';
-import LoginPage from './pages/login';
-import TicketBooking from './pages/Ticket2';
-import RfDetailPage from './pages/RFdetail';
-import ATDetailPage from './pages/ATdetail';
-import NftDetail from './pages/Nftdetail';
+import React from "react";
+import { createContext, useEffect, useState } from "react";
+import "./index.css";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import Footer from "./components/footer";
+import Header from "./components/header";
+import StatusBar from "./components/statusbar";
+import EventPage from "./pages/Event";
+import Homepage from "./pages/Home";
+import ReactPlayer from "react-player";
+import Mypage from "./pages/Mypage";
+import Nfttest from "./pages/Nfttest";
+import AdminPage from "./pages/admin";
+import { n_abi, n_addr, t_abi, t_addr } from "./raffletest.config";
+import Web3 from "web3";
+import LoginPage from "./pages/login";
+import TicketBooking from "./pages/Ticket2";
+import RfDetailPage from "./pages/RFdetail";
+import ATDetailPage from "./pages/ATdetail";
+import NftDetail from "./pages/Nftdetail";
+import GameDetailPage from "./components/Gamedetail";
 
 export const AppContext = createContext();
 
-const admin = '0x1f6D70acBd7B09096717fd5625783F78AF685A5a';
+const admin = "0x1f6D70acBd7B09096717fd5625783F78AF685A5a";
 function App() {
   const [temp, setTemp] = useState();
   const [account, setAccount] = useState();
@@ -67,8 +68,7 @@ function App() {
         web3,
         token_c,
         nft_c,
-      }}
-    >
+      }}>
       <div>
         <ReactPlayer
           url="/Videos/video.mp4"
@@ -78,20 +78,20 @@ function App() {
           width="100%"
           height="auto"
           style={{
-            position: 'absolute',
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
           }}
         />
         <div
           style={{
-            position: 'absolute',
+            position: "absolute",
             top: 0,
             bottom: 0,
             left: 0,
             right: 0,
-            backgroundColor: 'rgba(0,0,0,0.15)',
+            backgroundColor: "rgba(0,0,0,0.15)",
           }}
         />
 
@@ -110,6 +110,7 @@ function App() {
               <Route path="/RFDetail/:idx" element={<RfDetailPage />} />
               <Route path="/ATDetail/:idx" element={<ATDetailPage />} />
               <Route path="/NFTDetail/:idx" element={<NftDetail />} />
+              <Route path="/GameDetail" element={<GameDetailPage />} />
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
             <Footer />
