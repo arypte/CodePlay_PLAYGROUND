@@ -180,6 +180,11 @@ const AdminPage = ({ admin }) => {
       const response = await axios.get(
         `${process.env.REACT_APP_BACKEND_URL}/${ARdata}`,
         {
+          params: {
+            isEnd: false,
+          },
+        },
+        {
           headers: {
             'ngrok-skip-browser-warning': 'any',
           },
@@ -226,13 +231,12 @@ const AdminPage = ({ admin }) => {
             <div>loading</div>
           ) : (
             data?.map((v, i) => {
-              if (v.isEnd === false) {
-                return (
-                  <button key={i} onClick={() => RaffleEnd(v.id)}>
-                    {v.id}번 래플 종료
-                  </button>
-                );
-              }
+              return (
+                <button key={i} onClick={() => RaffleEnd(v.id)}>
+                  {v.id}번 래플 종료
+                </button>
+              );
+
               return null;
             })
           )}
@@ -264,13 +268,11 @@ const AdminPage = ({ admin }) => {
           <div>loading</div>
         ) : (
           data?.map((v, i) => {
-            if (v.isEnd === false) {
-              return (
-                <button key={i} onClick={() => AuctionEnd(v.id)}>
-                  {v.id}번 옥션 종료
-                </button>
-              );
-            }
+            return (
+              <button key={i} onClick={() => AuctionEnd(v.id)}>
+                {v.id}번 옥션 종료
+              </button>
+            );
             return null;
           })
         )}
