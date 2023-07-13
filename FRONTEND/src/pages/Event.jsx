@@ -49,15 +49,13 @@ const EventPage = () => {
     setIsLoading(true);
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_BACKEND_URL}/raffle`,
-        {
-          params: {
-            isEnd: toggle,
-          },
-        },
+        `${process.env.REACT_APP_BACKEND_URL}/raffle/`,
         {
           headers: {
             'ngrok-skip-browser-warning': 'any',
+          },
+          params: {
+            isEnd: toggle,
           },
         }
       );
@@ -73,9 +71,6 @@ const EventPage = () => {
     setIsLoading(true);
 
     try {
-      console.log(
-        `${process.env.REACT_APP_BACKEND_URL}/raffle/${account.address}`
-      );
       const response = await axios.get(
         `${process.env.REACT_APP_BACKEND_URL}/raffle/${account.address}`,
         {
@@ -85,7 +80,6 @@ const EventPage = () => {
         }
       );
       setItems(response.data);
-      console.log(response);
       setIsLoading(false);
     } catch (error) {
       console.error(error);
@@ -99,13 +93,11 @@ const EventPage = () => {
       const response = await axios.get(
         `${process.env.REACT_APP_BACKEND_URL}/auction`,
         {
-          params: {
-            isEnd: toggle,
-          },
-        },
-        {
           headers: {
             'ngrok-skip-browser-warning': 'any',
+          },
+          params: {
+            isEnd: toggle,
           },
         }
       );
@@ -119,7 +111,7 @@ const EventPage = () => {
 
   useEffect(() => {
     if (data) {
-      setPage((data.length + 1) / 2);
+      setPage(data.length / 2);
     }
   }, [data]);
 
