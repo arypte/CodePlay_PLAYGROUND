@@ -8,11 +8,11 @@ const client = new PrismaClient();
 // 래플 생성
 router.post('/', async (req, res) => {
   try {
-    const { name , url , start_block } = req.body;
+    const { name, url, start_block } = req.body;
 
     const newRaffle = await client.raffle.create({
       data: {
-        name , 
+        name,
         url,
         start_block,
         isEnd: false,
@@ -28,14 +28,13 @@ router.post('/', async (req, res) => {
 // 래플 조회 ( 종료 여부 )
 router.get('/', async (req, res) => {
   try {
-    const { isEnd } = req.body;
-    const raffles = await client.raffle.findMany(
-      {
-        where:{
-          isEnd ,
-        }
-      }
-    );
+    const isEndStr = req.query.isEnd;
+    const isEnd = JSON.parse(isEndStr);
+    const raffles = await client.raffle.findMany({
+      where: {
+        isEnd,
+      },
+    });
     return res.json(raffles);
   } catch (error) {
     console.error(error);
@@ -62,7 +61,7 @@ router.get('/:id', async (req, res) => {
 router.put('/:id/done', async (req, res) => {
   try {
     const { id } = req.params;
-    const { end_block , winner } = req.body;
+    const { end_block, winner } = req.body;
 
     const Raffle = await client.raffle.findUnique({
       where: {
@@ -71,7 +70,7 @@ router.put('/:id/done', async (req, res) => {
     });
 
     if (!Raffle) {
-      return res.status(400).json({ ok: false, error: "Not exist Raffle" });
+      return res.status(400).json({ ok: false, error: 'Not exist Raffle' });
     }
 
     await client.raffle.update({
@@ -83,10 +82,9 @@ router.put('/:id/done', async (req, res) => {
         isEnd: true,
         winner,
       },
-    }) ;
+    });
 
-    res.json( { ok: true } ) ;
-
+    res.json({ ok: true });
   } catch (error) {
     console.error(error);
   }

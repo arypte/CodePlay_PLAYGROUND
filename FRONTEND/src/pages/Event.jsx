@@ -1,10 +1,10 @@
-import React, { useContext, useEffect, useState } from "react";
-import "../style/rafflebox.css";
-import axios from "axios";
-import RaffleCard from "../components/list_rafflecard";
-import AuctionCard from "../components/list_auctioncard";
-import { AppContext } from "../App";
-import { useNavigate } from "react-router-dom";
+import React, { useContext, useEffect, useState } from 'react';
+import '../style/rafflebox.css';
+import axios from 'axios';
+import RaffleCard from '../components/list_rafflecard';
+import AuctionCard from '../components/list_auctioncard';
+import { AppContext } from '../App';
+import { useNavigate } from 'react-router-dom';
 
 const EventPage = () => {
   const [activeTab, setActiveTab] = useState(1);
@@ -13,40 +13,40 @@ const EventPage = () => {
   const [toggle, setToggle] = useState(false);
   const { account, getbalance } = useContext(AppContext);
   const [page, setPage] = useState(1);
-  const [sp, setSp] = useState(0);
+  const [sp, setSp] = useState(1);
   let content;
   let buttonGroup = null;
 
   const items = [
     {
       id: 1,
-      image: "product1.jpg",
-      name: "아이템 1",
-      description: "아이템 1에 대한 설명",
+      image: 'product1.jpg',
+      name: '아이템 1',
+      description: '아이템 1에 대한 설명',
     },
     {
       id: 2,
-      image: "product2.jpg",
-      name: "아이템 2",
-      description: "아이템 2에 대한 설명",
+      image: 'product2.jpg',
+      name: '아이템 2',
+      description: '아이템 2에 대한 설명',
     },
     {
       id: 3,
-      image: "product3.jpg",
-      name: "아이템 3",
-      description: "아이템 3에 대한 설명",
+      image: 'product3.jpg',
+      name: '아이템 3',
+      description: '아이템 3에 대한 설명',
     },
     {
       id: 4,
-      image: "product4.jpg",
-      name: "아이템 4",
-      description: "아이템 4에 대한 설명",
+      image: 'product4.jpg',
+      name: '아이템 4',
+      description: '아이템 4에 대한 설명',
     },
     {
       id: 5,
-      image: "product5.jpg",
-      name: "아이템 5",
-      description: "아이템 5에 대한 설명",
+      image: 'product5.jpg',
+      name: '아이템 5',
+      description: '아이템 5에 대한 설명',
     },
   ];
 
@@ -66,8 +66,9 @@ const EventPage = () => {
         <button
           key={i}
           className={`page-button
-          ${i + 1 === 1 ? "text-white" : "text-gray-400"}`}
-          onClick={onClickPage(i + 1)}>
+          ${i + 1 === 1 ? 'text-white' : 'text-gray-400'}`}
+          onClick={onClickPage(i + 1)}
+        >
           {i + 1} <span className="text-base"></span>
         </button>
       );
@@ -82,8 +83,13 @@ const EventPage = () => {
       const response = await axios.get(
         `${process.env.REACT_APP_BACKEND_URL}/raffle`,
         {
+          params: {
+            isEnd: toggle,
+          },
+        },
+        {
           headers: {
-            "ngrok-skip-browser-warning": "any",
+            'ngrok-skip-browser-warning': 'any',
           },
         }
       );
@@ -101,8 +107,13 @@ const EventPage = () => {
       const response = await axios.get(
         `${process.env.REACT_APP_BACKEND_URL}/auction`,
         {
+          params: {
+            isEnd: toggle,
+          },
+        },
+        {
           headers: {
-            "ngrok-skip-browser-warning": "any",
+            'ngrok-skip-browser-warning': 'any',
           },
         }
       );
@@ -115,14 +126,6 @@ const EventPage = () => {
   };
 
   useEffect(() => {
-    if (activeTab === 1) {
-      get_Raffle_Data();
-    } else if (activeTab === 2) {
-      get_Auction_Data();
-    }
-  }, [activeTab]);
-
-  useEffect(() => {
     if (data) {
       setPage((data.length - 1) / 3 + 1);
     }
@@ -131,10 +134,29 @@ const EventPage = () => {
   const navigate = useNavigate();
   useEffect(() => {
     if (!account) {
-      navigate("/");
+      navigate('/');
     }
     getbalance();
   }, []);
+
+  useEffect(() => {
+    if (activeTab === 1) {
+      get_Raffle_Data();
+    } else if (activeTab === 2) {
+      get_Auction_Data();
+    }
+    setSp(1);
+  }, [toggle]);
+
+  useEffect(() => {
+    if (activeTab === 1) {
+      get_Raffle_Data();
+    } else if (activeTab === 2) {
+      get_Auction_Data();
+    }
+
+    setSp(1);
+  }, [activeTab]);
 
   if (activeTab === 1) {
     content = (
@@ -146,7 +168,7 @@ const EventPage = () => {
             <div>{pageComp()}</div>
             <div>
               {data?.map((v, i) => {
-                if (v.isEnd === toggle) {
+                if (i == (sp - 1) * 2 || i == (sp - 1) * 2 + 1) {
                   return <RaffleCard r_data={v} key={i} />;
                 }
                 return null;
@@ -176,7 +198,7 @@ const EventPage = () => {
             <div>{pageComp()}</div>
             <div>
               {data?.map((v, i) => {
-                if (v.isEnd === toggle) {
+                if (i == (sp - 1) * 2 || i == (sp - 1) * 2 + 1) {
                   return <AuctionCard r_data={v} key={i} />;
                 }
                 return null;
@@ -220,21 +242,24 @@ const EventPage = () => {
     <>
       <div className="tab2-container shadow-md">
         <button
-          className={`tab2 ${activeTab === 1 ? "active" : ""}`}
+          className={`tab2 ${activeTab === 1 ? 'active' : ''}`}
           onClick={() => handleTabClick(1)}
-          role="tab">
+          role="tab"
+        >
           래플
         </button>
         <button
-          className={`tab2 ${activeTab === 2 ? "active" : ""}`}
+          className={`tab2 ${activeTab === 2 ? 'active' : ''}`}
           onClick={() => handleTabClick(2)}
-          role="tab">
+          role="tab"
+        >
           옥션
         </button>
         <button
-          className={`tab2 ${activeTab === 3 ? "active" : ""}`}
+          className={`tab2 ${activeTab === 3 ? 'active' : ''}`}
           onClick={() => handleTabClick(3)}
-          role="tab">
+          role="tab"
+        >
           확인하기
         </button>
       </div>

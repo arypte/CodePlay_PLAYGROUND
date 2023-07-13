@@ -28,15 +28,14 @@ router.post('/', async (req, res) => {
 // 옥션 조회 ( 종료 여부 )
 router.get('/', async (req, res) => {
   try {
-    const { isEnd } = req.body;
-    const auctions = await client.auction.findMany(
-      {
-        where:{
-          isEnd ,
-        }
-      }
-    );
-    return res.json(auctions);
+    const isEndStr = req.query.isEnd;
+    const isEnd = JSON.parse(isEndStr);
+    const raffles = await client.auction.findMany({
+      where: {
+        isEnd,
+      },
+    });
+    return res.json(raffles);
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'An error occurred' });
