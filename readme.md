@@ -4,6 +4,7 @@
 ![React Version][react-image]
 ![Solidity Version][solidity-image]
 ![Express_Version][express-image]
+![Node_Version][node-image]
 
 한국 야구에 널리 퍼진 암표 성행으로 인해 피해를 보는 야구팬들에게
 *블록체인을 활용한 NFT 야구 티켓 플랫폼 서비스를 제공 및 대안으로 제시*합니다.  
@@ -56,5 +57,6 @@ XYZ 라이센스를 준수하며 ``LICENSE``에서 자세한 정보를 확인할
 <!-- Markdown link & img dfn's -->
 [solidity-image]: https://img.shields.io/badge/Solidity-0.8.19-blue
 [React-image]: https://img.shields.io/badge/React-v6-purple
-[Express-image]: https://img.shields.io/badge/Express-0.8.19-orange
+[Express-image]: https://img.shields.io/badge/Express-4.18.2-orange
+[Node-image]: https://img.shields.io/badge/Node-18.13.0-yellow
 
