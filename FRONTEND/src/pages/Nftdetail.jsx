@@ -108,7 +108,7 @@ const NftDetail = () => {
         <div>
           <div className="nft-details">
             <div className="nft-image">
-              <img src={data.url} alt="NFT 이미지" />
+              <img src={`https://github.com/team-codeplay-project/images/blob/main/image5.png?raw=true`} alt="NFT 이미지" />
             </div>
             <div className="nft-info">
               <h1 className="nft-title">{data.name}</h1>
